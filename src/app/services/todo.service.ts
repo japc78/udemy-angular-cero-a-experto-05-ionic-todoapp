@@ -16,6 +16,16 @@ export class TodoService {
     const newList = new List(title);
     this.list.push(newList);
     this.saveStorage();
+
+    return newList.id;
+  }
+
+  getList(id: string | number) {
+    // Se asegura que siempre sea del tipo number.
+    id = Number (id);
+
+    // Con find se busca la lista cuyo id sea igual al pasado por argumento.
+    return this.list.find(data => data.id === id);
   }
 
   saveStorage() {
