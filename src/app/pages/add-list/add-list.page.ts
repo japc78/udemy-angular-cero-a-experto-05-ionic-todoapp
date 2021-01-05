@@ -61,4 +61,9 @@ export class AddListPage implements OnInit {
     this.todoService.saveStorage();
   }
 
+  deleteItem(idx: number) {
+    this.list.items.splice(idx, 1);
+    this.todoService.saveStorage();
+  }
+
 }
