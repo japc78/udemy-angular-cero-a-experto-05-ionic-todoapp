@@ -9,15 +9,22 @@ export class TodoService {
   list: List[] = [];
 
   constructor() {
-    const list1 = new List('Estudiar Angular');
-    const list2 = new List('Estudiar certificacion de Java');
-
-    this.list.push(list1, list2);
-    // console.log(this.list);
+    this.loadStorage();
   }
 
   addList(title: string) {
     const newList = new List(title);
     this.list.push(newList);
+    this.saveStorage();
+  }
+
+  saveStorage() {
+    localStorage.setItem('data', JSON.stringify(this.list));
+  }
+
+  loadStorage() {
+    if (localStorage.getItem('data')) {
+      this.list = JSON.parse(localStorage.getItem('data'));
+    }
   }
 }
