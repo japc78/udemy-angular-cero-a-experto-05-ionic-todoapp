@@ -19,8 +19,12 @@
     <ion-list-header>
       <ion-label>To do</ion-label>
     </ion-list-header>
-    <ion-item *ngFor="let item of list.items">
-      <ion-checkbox slot="start" [(ngModel)]="item.complete"></ion-checkbox>
+    <ion-item *ngFor="let item of list.items" class="animated fadeInDown">
+      <ion-checkbox
+        slot="start"
+        [(ngModel)]="item.complete"
+        (ionChange)="updateCheck(item)"
+      ></ion-checkbox>
       <ion-label>{{item.description}}</ion-label>
     </ion-item>
   </ion-list>

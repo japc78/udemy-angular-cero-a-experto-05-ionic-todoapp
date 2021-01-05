@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TodoService } from '../../services/todo.service';
 import { List } from '../../models/list.model';
 import { ListItem } from '../../models/list-item.model';
+import { log } from 'console';
 
 @Component({
   selector: 'app-add-list',
@@ -39,6 +40,24 @@ export class AddListPage implements OnInit {
     this.list.items.push(newItem);
 
     this.itemName = '';
+    this.todoService.saveStorage();
+  }
+
+  updateCheck(item: ListItem) {
+    // Se comprueban los elementos que aun no han terminado
+    const itemNoFinish = this.list.items
+                              .filter( data => !data.complete)
+                              .length;
+    console.log({ itemNoFinish });
+
+    if (itemNoFinish === 0) {
+      this.list.completeDate = new Date();
+      this.list.isFinished = true;
+    } else {
+      this.list.completeDate = null;
+      this.list.isFinished = false;
+    }
+
     this.todoService.saveStorage();
   }
 
