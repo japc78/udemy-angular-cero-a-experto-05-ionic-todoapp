@@ -14,6 +14,10 @@ export class TodoService {
 
     this.list.push(list1, list2);
     // console.log(this.list);
+  }
 
+  addList(title: string) {
+    const newList = new List(title);
+    this.list.push(newList);
   }
 }
