@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { TodoService } from '../../services/todo.service';
 import { List } from '../../models/list.model';
 import { ListItem } from '../../models/list-item.model';
-import { log } from 'console';
 
 @Component({
   selector: 'app-add-list',
@@ -25,7 +24,6 @@ export class AddListPage implements OnInit {
 
     this.list = this.todoService.getList(listId);
     // console.log(this.list);
-
   }
 
   ngOnInit() {
@@ -61,4 +59,8 @@ export class AddListPage implements OnInit {
     this.todoService.saveStorage();
   }
 
+  deleteItem(idx: number) {
+    this.list.items.splice(idx, 1);
+    this.todoService.saveStorage();
+  }
 }
