@@ -1,3 +1,10 @@
-<p>
-  list works!
-</p>
+<ion-list>
+  <ion-item
+    *ngFor="let item of list"
+    detail
+    (click)="viewList(item)"
+  >
+    <ion-label>{{ item.title }}</ion-label>
+    <ion-note slot="end">{{item.items.length}} items</ion-note>
+  </ion-item>
+</ion-list>

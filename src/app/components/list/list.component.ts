@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { TodoService } from '../../services/todo.service';
+import { List } from '../../models/list.model';
 
 @Component({
   selector: 'app-list',
@@ -7,8 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  @Input() isFinished = true;
+
+  list: List[] = [];
+
+  constructor(
+    private todoService: TodoService,
+    private router: Router) {
+    this.list = todoService.list;
+  }
 
   ngOnInit() {}
 
+  viewList(list: List) {
+    this.router.navigateByUrl(`/tabs/tab${this.isFinished ? 2 : 1}/add-list/${list.id}`);
+  }
 }

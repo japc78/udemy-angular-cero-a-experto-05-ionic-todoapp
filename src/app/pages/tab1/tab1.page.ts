@@ -11,16 +11,11 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab1Page {
 
-  list: List[] = [];
-
   constructor(
       public todoService: TodoService,
       private router: Router,
       public alertController: AlertController
-      ) {
-    this.list = todoService.list;
-
-  }
+      ) { }
 
   async addList() {
     const alert = await this.alertController.create({
@@ -57,9 +52,5 @@ export class Tab1Page {
     });
 
     alert.present();
-  }
-
-  viewList(list: List) {
-    this.router.navigateByUrl(`/tabs/tab1/add-list/${list.id}`);
   }
 }
