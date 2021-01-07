@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListComponent } from './list/list.component';
 import { IonicModule } from '@ionic/angular';
-import { TodoService } from '../services/todo.service';
+import { PipesModule } from '../pipes/pipes.module';
 
 
 
@@ -15,7 +15,8 @@ import { TodoService } from '../services/todo.service';
   ],
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule,
+    PipesModule
   ]
 })
 export class ComponentsModule { }

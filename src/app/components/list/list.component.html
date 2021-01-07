@@ -1,6 +1,6 @@
 <ion-list>
   <ion-item-sliding
-    *ngFor="let item of todoService.list"
+    *ngFor="let item of todoService.list | filterFinished:isFinished"
   >
     <ion-item
       detail
