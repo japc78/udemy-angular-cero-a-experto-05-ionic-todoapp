@@ -12,17 +12,18 @@ export class ListComponent implements OnInit {
 
   @Input() isFinished = true;
 
-  list: List[] = [];
-
   constructor(
-    private todoService: TodoService,
+    public todoService: TodoService,
     private router: Router) {
-    this.list = todoService.list;
   }
 
   ngOnInit() {}
 
   viewList(list: List) {
     this.router.navigateByUrl(`/tabs/tab${this.isFinished ? 2 : 1}/add-list/${list.id}`);
+  }
+
+  deleteList(list: List) {
+    this.todoService.deleteList(list);
   }
 }

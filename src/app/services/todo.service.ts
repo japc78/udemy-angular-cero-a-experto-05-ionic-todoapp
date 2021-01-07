@@ -28,6 +28,11 @@ export class TodoService {
     return this.list.find(data => data.id === id);
   }
 
+  deleteList(list: List ) {
+    this.list = this.list.filter( data => data.id !== list.id);
+    this.saveStorage();
+  }
+
   saveStorage() {
     localStorage.setItem('data', JSON.stringify(this.list));
   }
